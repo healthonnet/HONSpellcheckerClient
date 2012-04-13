@@ -7,6 +7,7 @@ Developer
 =========
 
 Nolan Lawson
+
 Health on the Net Foundation
 
 License

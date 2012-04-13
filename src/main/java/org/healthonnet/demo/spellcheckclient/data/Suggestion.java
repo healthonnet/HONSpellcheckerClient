@@ -2,13 +2,16 @@ package org.healthonnet.demo.spellcheckclient.data;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Suggestion {
 
 	private String originalString;
 	private int numFound;
 	private int startOffset;
 	private int endOffset;
-	private List<String> suggestion;
+	@SerializedName("suggestion")
+	private List<SuggestedCorrection> suggestedCorrections;
 	
 	public String getOriginalString() {
 		return originalString;
@@ -34,16 +37,17 @@ public class Suggestion {
 	public void setEndOffset(int endOffset) {
 		this.endOffset = endOffset;
 	}
-	public List<String> getSuggestion() {
-		return suggestion;
+	public List<SuggestedCorrection> getSuggestedCorrections() {
+		return suggestedCorrections;
 	}
-	public void setSuggestion(List<String> suggestion) {
-		this.suggestion = suggestion;
+	public void setSuggestedCorrections(
+			List<SuggestedCorrection> suggestedCorrections) {
+		this.suggestedCorrections = suggestedCorrections;
 	}
 	@Override
 	public String toString() {
 		return "Suggestion [numFound=" + numFound + ", startOffset="
 				+ startOffset + ", endOffset=" + endOffset + ", suggestion="
-				+ suggestion + "]";
+				+ suggestedCorrections + "]";
 	}
 }

@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -25,17 +27,18 @@ import com.google.gson.GsonBuilder;
  *
  */
 public class SpellcheckRequester {
-
 	
 	/**
 	 * Query the live HON spell checker to request corrections for each of the supplied terms.
 	 * 
+	 * @param spellcheckDictionary the dictionary (i.e. language) to use
 	 * @param numCorrections number of SuggestedCorrections to provide per term
 	 * @param terms list of terms to suggest corrections for
 	 * @return
 	 * @throws IOException if cannot connect
 	 */
-	public static SpellcheckResponse getSpellcheckResponse(int numCorrections, String... terms) throws IOException {
+	public static SpellcheckResponse getSpellcheckResponse(SpellcheckDictionary spellcheckDictionary, 
+			int numCorrections, List<String> terms) throws IOException {
 		String encodedTerms = null;
 		try {
 			encodedTerms = URLEncoder.encode(Joiner.on(' ').join(terms), Charsets.UTF_8.name());
@@ -43,14 +46,12 @@ public class SpellcheckRequester {
 			Throwables.propagate(e); // shouldn't happen
 		}
 		
-		String request = "http://services.hon.ch/hon-search/select" +
-				"?spellcheck=true" +
-				"&wt=json" +
-				"&rows=0" + // no search results
-				"&indent=off" + // don't bother indexing
-				"&echoParams=none" + // don't bother giving us the parameters back
+		String request = "http://services.hon.ch/hon-search/spell" +
+				"?wt=json" +
+				"&indent=off" + // don't bother indenting
 				"&spellcheck.extendedResults=true" + // give us frequencies for each correction
 				"&spellcheck.count=" + numCorrections + // number of corrections per term
+				"&spellcheck.dictionary=" + spellcheckDictionary.getCode() +
 				"&q=" +
 				encodedTerms;
 		
@@ -63,6 +64,38 @@ public class SpellcheckRequester {
 		
 		return spellcheckResponse;
 	}
+	
+	/**
+	 * Query the live HON spell checker to request corrections for each of the supplied terms.
+	 * 
+	 * @param spellcheckDictionary the dictionary (i.e. language) to use
+	 * @param numCorrections number of SuggestedCorrections to provide per term
+	 * @param terms list of terms to suggest corrections for
+	 * @return
+	 * @throws IOException if cannot connect
+	 */
+	public static SpellcheckResponse getSpellcheckResponse(SpellcheckDictionary spellcheckDictionary, 
+			int numCorrections, String... terms) throws IOException {
+		return getSpellcheckResponse(spellcheckDictionary, numCorrections, Arrays.asList(terms));
+	}
+	
+	/**
+	 * Ask the server to rebuild all the spellcheck dictionaries.
+	 * @throws IOException if unsuccessful
+	 */
+	public static void rebuildAllSpellcheckDictionaries() throws IOException {
+		
+		for (SpellcheckDictionary spellcheckDictionary : SpellcheckDictionary.values()) {
+			String request = "http://services.hon.ch/hon-search/spell" +
+					"?wt=json" +
+					"&indent=off" + // don't bother indenting
+					"&q=foobar" + // have to put something here
+					"&spellcheck.dictionary=" + spellcheckDictionary.getCode() + 
+					"&spellcheck.build=true";
+			getHttpResponse(request);
+		}
+	}
+	
 	
 	private static String getHttpResponse(String url) throws IOException {
 		DefaultHttpClient httpclient = new DefaultHttpClient();

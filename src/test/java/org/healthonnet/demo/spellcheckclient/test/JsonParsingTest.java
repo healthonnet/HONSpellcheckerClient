@@ -1,5 +1,7 @@
 package org.healthonnet.demo.spellcheckclient.test;
 
+import static org.healthonnet.demo.spellcheckclient.SpellcheckDictionary.*;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class JsonParsingTest {
 	@Test
 	public void testSingleWordSuggestion() throws IOException {
 		
-		SpellcheckResponse spellcheckResponse = SpellcheckRequester.getSpellcheckResponse(1, "alzeimer");
+		SpellcheckResponse spellcheckResponse = SpellcheckRequester.getSpellcheckResponse(English, 1, "alzeimer");
 		
 		List<Suggestion> suggestions = spellcheckResponse.getSpellcheck().getSuggestions();
 		
@@ -30,7 +32,7 @@ public class JsonParsingTest {
 	
 	@Test
 	public void testMultipleWordSuggestion() throws IOException {
-		SpellcheckResponse spellcheckResponse = SpellcheckRequester.getSpellcheckResponse(1, "alzeimer", "diseas");
+		SpellcheckResponse spellcheckResponse = SpellcheckRequester.getSpellcheckResponse(English, 1, "alzeimer", "diseas");
 		
 		List<Suggestion> suggestions = spellcheckResponse.getSpellcheck().getSuggestions();
 		
@@ -47,7 +49,7 @@ public class JsonParsingTest {
 	
 	@Test
 	public void testMultipleSuggestions() throws IOException {
-		SpellcheckResponse spellcheckResponse = SpellcheckRequester.getSpellcheckResponse(15, "diabetis");
+		SpellcheckResponse spellcheckResponse = SpellcheckRequester.getSpellcheckResponse(English, 15, "diabetis");
 		
 		List<Suggestion> suggestions = spellcheckResponse.getSpellcheck().getSuggestions();
 		

@@ -16,7 +16,7 @@ List<Suggestion> suggestions = spellcheckResponse.getSpellcheck().getSuggestions
 System.out.println(suggestions.get(0).getSuggestedCorrections().get(0).getWord();
 ```
 
-Demo of a HON Spelling Correction client using Google Gson.  Shows how to parse the JSON result from the HON spellcheck server.  The Maven JUnit tests should demonstrate this.
+The library uses Google Gson to parse the JSON result from the HON spellcheck server.  The Maven JUnit tests should demonstrate this.
 
 Developer
 =========

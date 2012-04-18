@@ -7,13 +7,14 @@ Example usage:
 
 ```java
 // language, number of suggestions to return, input string
+// language, number of suggestions to return, input string
 SpellcheckResponse spellcheckResponse = 
-        SpellcheckRequester.getSpellcheckResponse(SpellcheckDictionary.English, 1, "mispelled");
+        SpellcheckRequester.getSpellcheckResponse(SpellcheckDictionary.English, 1, "alzeimer");
 
 List<Suggestion> suggestions = spellcheckResponse.getSpellcheck().getSuggestions();
 
-// prints "misspelled"
-System.out.println(suggestions.get(0).getSuggestedCorrections().get(0).getWord();
+// prints "alzheimer"
+System.out.println(suggestions.get(0).getSuggestedCorrections().get(0).getWord());
 ```
 
 The library uses Google Gson to parse the JSON result from the HON spellcheck server.  The Maven JUnit tests should demonstrate this.

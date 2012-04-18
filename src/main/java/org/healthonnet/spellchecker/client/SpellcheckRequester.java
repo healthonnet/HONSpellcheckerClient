@@ -58,10 +58,6 @@ public class SpellcheckRequester {
 		String json = getHttpResponse(request);
 		SpellcheckResponse spellcheckResponse = getGson().fromJson(json, SpellcheckResponse.class);
 		
-		// for debugging
-		System.out.println(spellcheckResponse);
-		System.out.println(getGson().toJson(spellcheckResponse));
-		
 		return spellcheckResponse;
 	}
 	

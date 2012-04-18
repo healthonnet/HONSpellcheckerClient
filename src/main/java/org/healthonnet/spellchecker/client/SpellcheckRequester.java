@@ -1,4 +1,4 @@
-package org.healthonnet.demo.spellcheckclient;
+package org.healthonnet.spellchecker.client;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,8 +11,8 @@ import java.util.List;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.healthonnet.demo.spellcheckclient.data.Spellcheck;
-import org.healthonnet.demo.spellcheckclient.data.SpellcheckResponse;
+import org.healthonnet.spellchecker.client.data.Spellcheck;
+import org.healthonnet.spellchecker.client.data.SpellcheckResponse;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;

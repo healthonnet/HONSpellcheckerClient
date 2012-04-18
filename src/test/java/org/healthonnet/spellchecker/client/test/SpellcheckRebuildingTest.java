@@ -1,8 +1,8 @@
-package org.healthonnet.demo.spellcheckclient.test;
+package org.healthonnet.spellchecker.client.test;
 
 import java.io.IOException;
 
-import org.healthonnet.demo.spellcheckclient.SpellcheckRequester;
+import org.healthonnet.spellchecker.client.SpellcheckRequester;
 import org.junit.Ignore;
 import org.junit.Test;
 

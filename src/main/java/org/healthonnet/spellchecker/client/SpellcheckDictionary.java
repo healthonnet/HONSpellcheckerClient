@@ -1,4 +1,4 @@
-package org.healthonnet.demo.spellcheckclient;
+package org.healthonnet.spellchecker.client;
 
 import java.util.Arrays;
 

@@ -1,15 +1,14 @@
-package org.healthonnet.demo.spellcheckclient.test;
+package org.healthonnet.spellchecker.client.test;
 
-import static org.healthonnet.demo.spellcheckclient.SpellcheckDictionary.English;
-import static org.healthonnet.demo.spellcheckclient.SpellcheckDictionary.*;
+import static org.healthonnet.spellchecker.client.SpellcheckDictionary.*;
 
 import java.io.IOException;
 import java.util.List;
 
-import org.healthonnet.demo.spellcheckclient.SpellcheckDictionary;
-import org.healthonnet.demo.spellcheckclient.SpellcheckRequester;
-import org.healthonnet.demo.spellcheckclient.data.SpellcheckResponse;
-import org.healthonnet.demo.spellcheckclient.data.Suggestion;
+import org.healthonnet.spellchecker.client.SpellcheckDictionary;
+import org.healthonnet.spellchecker.client.SpellcheckRequester;
+import org.healthonnet.spellchecker.client.data.SpellcheckResponse;
+import org.healthonnet.spellchecker.client.data.Suggestion;
 import org.junit.Assert;
 import org.junit.Test;
 

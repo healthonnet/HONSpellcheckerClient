@@ -1,10 +1,10 @@
-package org.healthonnet.demo.spellcheckclient;
+package org.healthonnet.spellchecker.client;
 
 import java.lang.reflect.Type;
 import java.util.List;
 
-import org.healthonnet.demo.spellcheckclient.data.Spellcheck;
-import org.healthonnet.demo.spellcheckclient.data.Suggestion;
+import org.healthonnet.spellchecker.client.data.Spellcheck;
+import org.healthonnet.spellchecker.client.data.Suggestion;
 
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;

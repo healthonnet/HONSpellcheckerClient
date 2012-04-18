@@ -1,4 +1,4 @@
-package org.healthonnet.demo.spellcheckclient.data;
+package org.healthonnet.spellchecker.client.data;
 
 import com.google.gson.annotations.SerializedName;
 

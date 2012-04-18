@@ -9,11 +9,13 @@ Installation
 ----------
 
 Download the code and do:
+
 ```
 mvn install
 ```
 
 Then add the following to your pom.xml:
+
 ```
 <dependencies>
   ...

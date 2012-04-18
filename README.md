@@ -7,7 +7,8 @@ Example usage:
 
 ```java
 // language, number of suggestions to return, input string
-SpellcheckResponse spellcheckResponse = SpellcheckRequester.getSpellcheckResponse(SpellcheckDictionary.English, 1, "mispelled");
+SpellcheckResponse spellcheckResponse = 
+        SpellcheckRequester.getSpellcheckResponse(SpellcheckDictionary.English, 1, "mispelled");
 
 List<Suggestion> suggestions = spellcheckResponse.getSpellcheck().getSuggestions();
 

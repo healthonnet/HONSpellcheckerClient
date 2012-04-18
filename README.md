@@ -14,7 +14,7 @@ mvn install
 ```
 
 Then add the following to your pom.xml:
-```xml
+```
 <dependencies>
   ...
   <dependency>

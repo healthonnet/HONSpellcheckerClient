@@ -59,4 +59,12 @@
 			<comments>A business-friendly OSS license</comments>
 		</license>
 	</licenses>
+
+	<distributionManagement>
+		<repository>
+			<id>deploy-snapshot</id>
+			<url>http://mvn.is.inf.uni-due.de:8081/nexus/content/repositories/khresmoi-snapshots/</url>
+		</repository>
+	</distributionManagement>
+
 </project>

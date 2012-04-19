@@ -1,19 +1,15 @@
 package org.healthonnet.spellchecker.client.test;
 
-import static org.healthonnet.spellchecker.client.SpellcheckDictionary.*;
+import static org.healthonnet.spellchecker.client.SpellcheckDictionary.English;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.healthonnet.spellchecker.client.SpellcheckRequester;
 import org.healthonnet.spellchecker.client.data.SpellcheckResponse;
-import org.healthonnet.spellchecker.client.data.SuggestedCorrection;
 import org.healthonnet.spellchecker.client.data.Suggestion;
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.google.common.collect.Ordering;
-import com.google.common.primitives.Longs;
 
 public class JsonParsingTest {
 	
@@ -57,16 +53,7 @@ public class JsonParsingTest {
 		Assert.assertEquals("diabetis", suggestions.get(0).getOriginalString());
 		Assert.assertEquals(15, suggestions.get(0).getSuggestedCorrections().size());
 		
-		// sort the suggested corrections by the max frequency
-		SuggestedCorrection maxSuggestedCorrection = new Ordering<SuggestedCorrection>(){
-
-			@Override
-			public int compare(SuggestedCorrection left, SuggestedCorrection right) {
-				return Longs.compare(left.getFreq(), right.getFreq());
-			}}
-			.max(suggestions.get(0).getSuggestedCorrections());
-		
-		// "diabetes" should have the highest frequency
-		Assert.assertEquals("diabetes", maxSuggestedCorrection.getWord());
+		// "diabetes" should have the highest score
+		Assert.assertEquals("diabetes", suggestions.get(0).getSuggestedCorrections().get(0).getWord());
 	}
 }

@@ -10,6 +10,14 @@ public class Suggestion {
 	private int numFound;
 	private int startOffset;
 	private int endOffset;
+	private int origFreq;
+	
+	public int getOrigFreq() {
+		return origFreq;
+	}
+	public void setOrigFreq(int origFreq) {
+		this.origFreq = origFreq;
+	}
 	@SerializedName("suggestion")
 	private List<SuggestedCorrection> suggestedCorrections;
 	

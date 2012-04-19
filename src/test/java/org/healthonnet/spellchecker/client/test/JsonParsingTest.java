@@ -55,5 +55,9 @@ public class JsonParsingTest {
 		
 		// "diabetes" should have the highest score
 		Assert.assertEquals("diabetes", suggestions.get(0).getSuggestedCorrections().get(0).getWord());
+		Assert.assertEquals(15, suggestions.get(0).getNumFound());
+		Assert.assertEquals(0, suggestions.get(0).getStartOffset());
+		Assert.assertEquals(8, suggestions.get(0).getEndOffset());
+		Assert.assertEquals(0, suggestions.get(0).getOrigFreq());
 	}
 }
